@@ -1,0 +1,30 @@
+<div class="mt-2">
+  <div class="row mb-2">
+    <div class="col-6" class="h5">Tableux d'utilisateurs</div>
+    <div class="col"><button class="btn btn-sm btn-primary float-right" (click)="goToAddPage()"><i class="fa fa-plus"></i> Ajouter un utilisateur</button></div>
+  </div>
+  <table class="table">
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>login</th>
+      <th>Mote de passe</th>
+      <th>role</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let user of users; let index=index">
+      <td>{{ user.id }}</td>
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.login }}</td>
+      <td>{{ user.mdp }}</td>
+      <td>{{ user.role }}</td>
+      <td><button class="btn btn-sm btn-danger mr-1" (click)="removeUser(index)"><i class="fa fa-trash-alt"></i>Delete</button>
+        <button class="btn btn-sm btn-warning" (click)="goToUpdatePage(index)">Modifier</button>
+      </td>
+    </tr>
+
+  </table>
+
+</div>
