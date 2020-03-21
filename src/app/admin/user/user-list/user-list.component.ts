@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class UserListComponent implements OnInit {
   users = [];
   i: number;
-  constructor(private usersService: UsersService,private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router) { }
   ngOnInit() {
     this.users = this.usersService.getUsers();
     console.log(this.users);

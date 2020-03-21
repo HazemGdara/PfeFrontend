@@ -19,7 +19,7 @@
       <td>{{ user.prenom }}</td>
       <td>{{ user.login }}</td>
       <td>{{ user.mdp }}</td>
-      <td>{{ user.role }}</td>
+      <td>{{ user.role.nom }}</td>
       <td><button class="btn btn-sm btn-danger mr-1" (click)="removeUser(index)"><i class="fa fa-trash-alt"></i>Delete</button>
         <button class="btn btn-sm btn-warning" (click)="goToUpdatePage(index)">Modifier</button>
       </td>
