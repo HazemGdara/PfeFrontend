@@ -23,36 +23,31 @@ export class UsersService{
     // console.log(this.getUsers());
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get('http://localhost:8090/users');
+  getUsers(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>('http://localhost:8090/users');
   }
   getUser(index: number) {
     return this.users[index];
   }
   deleteUser(id: number): Observable<void> {
-   return this.http.delete<void>('http://localhost:8090/users/`id`');
+   return this.http.delete<void>('http://localhost:8090/users/' + id);
   }
 
 
-  getUserById(id: number) {
-    for (this.i = 0; this.i < this.users.length; this.i++) {
-      if (this.users[this.i].id === id) {
-        return this.users[this.i];
-      }
-    }
+  getUserById(id: number): Observable<UserModel> {
+    return this.http.get<UserModel>('http://localhost:8090/users/' + id);
   }
+
   addUser(user: UserModel) {
-    this.users.push(user);
+    this.http.post(
+      'http://localhost:8090/users', user
+    ).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   }
   // updateUser(index: number) {
   //
   // }
 
-  doRegistration(user) {
-    this.http.post(
-      'http://localhost:8090/users', user
-    ).subscribe((data) => {
-      console.log(user);
-    });
-  }
-}

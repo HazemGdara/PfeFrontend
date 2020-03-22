@@ -12,6 +12,7 @@ import { UsersService } from './shared/users.service';
 import { UpdateUserComponent } from './admin/user/update-user/update-user.component';
 import { AddUserComponent } from './admin/user/add-user/add-user.component';
 import {HttpClientModule} from '@angular/common/http';
+import {RoleService} from './shared/role.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

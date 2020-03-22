@@ -15,6 +15,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.usersService.getUsers().subscribe((data) => {
       this.users = data;
+      // console.log(data);
     });
 
   }
@@ -23,11 +24,17 @@ export class UserListComponent implements OnInit {
     // console.log(this.users);
     // console.log('id= ' + id);
     this.usersService.deleteUser(id).subscribe(
-      () => {console.log('user with id ' + id + 'was deleted');}
+      () => {console.log('user with id ' + id + 'was deleted');
+             this.usersService.getUsers().subscribe((data) => {
+          this.users = data;
+          // console.log(data);
+        });}
     );
+
+
   }
-  goToUpdatePage(index: number) {
-    this.router.navigate(['admin', 'user', this.users[index].id]);
+  goToUpdatePage(id: number) {
+    this.router.navigate(['admin', 'users', id]);
   }
   goToAddPage() {
     this.router.navigate(['admin', 'users', 'create']);

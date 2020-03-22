@@ -11,9 +11,9 @@ const approutes: Routes = [
 
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
+  { path: 'admin/users/:id', component: UpdateUserComponent },
   { path: 'admin/users', component: UserComponent },
   { path: 'admin/users/create', component: AddUserComponent },
-  { path: 'admin/user/:id', component: UpdateUserComponent },
   { path: '**', component: ErrorComponent }
 ];
 
