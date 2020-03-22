@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/users.service';
 import {Router} from '@angular/router';
+import {UserModel} from '../../../shared/user-model';
 
 @Component({
   selector: 'app-user-list',
@@ -8,18 +9,22 @@ import {Router} from '@angular/router';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users = [];
+  users: UserModel[];
   i: number;
   constructor(private usersService: UsersService, private router: Router) { }
   ngOnInit() {
-    this.users = this.usersService.getUsers();
-    console.log(this.users);
+    this.usersService.getUsers().subscribe((data) => {
+      this.users = data;
+    });
+
   }
 
-  removeUser(index: number) {
+  removeUser(id: number) {
     // console.log(this.users);
-    console.log('index= ' + index);
-    this.usersService.deleteUser(index);
+    // console.log('id= ' + id);
+    this.usersService.deleteUser(id).subscribe(
+      () => {console.log('user with id ' + id + 'was deleted');}
+    );
   }
   goToUpdatePage(index: number) {
     this.router.navigate(['admin', 'user', this.users[index].id]);

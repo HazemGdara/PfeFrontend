@@ -11,6 +11,7 @@ import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { UsersService } from './shared/users.service';
 import { UpdateUserComponent } from './admin/user/update-user/update-user.component';
 import { AddUserComponent } from './admin/user/add-user/add-user.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddUserComponent } from './admin/user/add-user/add-user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]
