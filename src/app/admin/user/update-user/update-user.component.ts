@@ -14,6 +14,7 @@ import {RoleModel} from '../../../shared/role-model';
 export class UpdateUserComponent implements OnInit {
   user: UserModel;
   roles: RoleModel[];
+  role : RoleModel;
   defaultValue: number;
   id: number;
   index: number;
@@ -31,13 +32,17 @@ export class UpdateUserComponent implements OnInit {
     });
   }
   update(form: NgForm) {
-    this.user.id = form.value.id;
+    this.user.id = +form.value.id;
     this.user.nom = form.value.nom;
     this.user.prenom = form.value.prenom;
     this.user.login = form.value.login;
     this.user.mdp = form.value.mdp;
-    this.user.role = form.value.role;
-    // this.router.navigate(['admin/users']);
+    this.role = new RoleModel(+form.value.role);
+    this.user.role = this.role;
+
+    console.log(this.user);
+    this.userService.updateUser(+form.value.id, this.user).subscribe(data => {console.log(data); });
+    this.router.navigate(['admin/users']);
   }
 
 }

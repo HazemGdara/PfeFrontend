@@ -46,6 +46,9 @@ export class UsersService{
     });
   }
 
+  updateUser(id: number, user: UserModel): Observable<void> {
+    return this.http.put<void>('http://localhost:8090/users/' + id, user);
+  }
   }
   // updateUser(index: number) {
   //
